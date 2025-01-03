@@ -82,13 +82,15 @@ const AuthDrawer = ({ isOpen, onClose }) => {
       }
 
       try {
-        await dispatch(
+        const response=await dispatch(
           createAccount({
             username: formData.username,
             email: formData.email,
             password: formData.password,
           })
         ).unwrap();
+        console.log(response);
+        
         toast.success("Account created successfully!");
         setIsSignIn(true);
       } catch (error) {
